@@ -442,7 +442,7 @@ def create_model(bert_config, is_training, input_ids, input_mask, segment_ids,
   with tf.variable_scope("loss"):
     if is_training:
       # I.e., 0.1 dropout
-      output_layer = tf.nn.dropout(output_layer, keep_prob=0.9)
+      output_layer = tf.nn.dropout(output_layer, rate = 0.1)
     output_layer = tf.reshape(output_layer, [-1, hidden_size])
     logits = tf.matmul(output_layer, output_weight, transpose_b=True)
     logits = tf.nn.bias_add(logits, output_bias)
